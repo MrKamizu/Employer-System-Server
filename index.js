@@ -21,6 +21,9 @@ app.use(
 );
 
 // Routes
+app.get("/", (req, res) => {
+  res.json({ message: "hello" });
+});
 app.use("/api/employee", api.employee);
 app.use("/api/department", api.department);
 
@@ -52,9 +55,7 @@ app.use((req, res, next) => {
 mongoose
   .connect(DB_HOST)
   .then(() => {
-    console.log(
-      `Listening on http://localhost:${PORT} 🚀 ...`
-    );
+    console.log(`Listening on http://localhost:${PORT} 🚀 ...`);
     app.listen(PORT);
   })
   .catch((error) => {
